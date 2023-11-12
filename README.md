@@ -7,6 +7,6 @@
   4/ Start docker engine\
   5/ Run "docker-compose up -d"\
   6/ Run "cargo install sqlx-cli"\
-  7/ Run "sqlx migrate run"\
+  7/ Run "sqlx migrate run"
 
   In order to start server run "cargo r run"
