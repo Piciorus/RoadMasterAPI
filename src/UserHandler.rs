@@ -51,6 +51,7 @@ async fn register_handler(
         Ok(_) => {
             let response = ApiResponse::success(
                 RegisterUserResponse {
+                    id: user_id,
                     username: body.username.clone(),
                     email: body.email.clone(),
                     password: body.password.clone(),
@@ -86,7 +87,16 @@ async fn login_handler(
     match result {
         Ok(Some(user)) => {
             if verify(&body.password, &user.password).unwrap_or(false) {
-                let response: ApiResponse<()> = ApiResponse::success((), "Login successful");
+                let response = ApiResponse::success(
+                    RegisterUserResponse {
+                        id: get_id_from_database_by_password(&data.db, body.email.clone()).await,
+                        username: get_actual_username_from_database(&data.db, body.email.clone()).await,
+                        email: body.email.clone(),
+                        password: body.password.clone(),
+                    },
+                    "Login successful",
+                );
+
                 HttpResponse::Ok().json(response)
             } else {
                 let response: ApiResponse<()> =
@@ -156,6 +166,14 @@ async fn get_actual_password_from_database(db: &MySqlPool, email: String) -> Str
         .await
         .unwrap_or_default()
 }
+
+async fn get_actual_username_from_database(db: &MySqlPool, email: String) -> String {
+    sqlx::query_scalar!("SELECT username FROM users WHERE email = ?", email)
+        .fetch_one(db)
+        .await
+        .unwrap_or_default()
+}
+
 
 async fn get_id_from_database_by_password(db: &MySqlPool, email: String) -> String {
     sqlx::query_scalar!(

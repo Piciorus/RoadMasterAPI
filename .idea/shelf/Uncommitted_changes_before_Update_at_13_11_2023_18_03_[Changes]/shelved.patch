@@ -1,0 +1,153 @@
+Index: .idea/RoadMasterAPI-RUST.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"EMPTY_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\">\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/RoadMasterAPI-RUST.iml b/.idea/RoadMasterAPI-RUST.iml
+--- a/.idea/RoadMasterAPI-RUST.iml	(revision 0280e4e6a92ea342520b881848b398c2511d49a3)
++++ b/.idea/RoadMasterAPI-RUST.iml	(date 1699716229134)
+@@ -8,4 +8,7 @@
+     <orderEntry type="inheritedJdk" />
+     <orderEntry type="sourceFolder" forTests="false" />
+   </component>
++  <component name="SonarLintModuleSettings">
++    <option name="uniqueId" value="2c5edfc4-ca95-46c6-a904-58f34027622d" />
++  </component>
+ </module>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"CargoProjects\">\r\n    <cargoProject FILE=\"$PROJECT_DIR$/Cargo.toml\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"c00710fb-36ca-4b06-883a-6c942bc61b03\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"ea6yb294\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 5\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2Y1z2DMYm0q7idEo97kVS9zBqTe\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Cargo.Run rust-mysql-crud-sqlx.executor\": \"Run\",\r\n    \"Docker.docker-compose.yml.mysql: Compose Deployment.executor\": \"Run\",\r\n    \"Docker.docker-compose.yml: Compose Deployment.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"main\",\r\n    \"last_opened_file_path\": \"C:/Users/Home/Desktop/RoadMasterAPI-RUST\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"org.rust.cargo.project.model.PROJECT_DISCOVERY\": \"true\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Docker.docker-compose.yml: Compose Deployment\">\r\n    <configuration name=\"Run rust-mysql-crud-sqlx\" type=\"CargoCommandRunConfiguration\" factoryName=\"Cargo Command\">\r\n      <option name=\"command\" value=\"run --package rust-mysql-crud-sqlx --bin rust-mysql-crud-sqlx\" />\r\n      <option name=\"workingDirectory\" value=\"file://$PROJECT_DIR$\" />\r\n      <option name=\"emulateTerminal\" value=\"true\" />\r\n      <option name=\"channel\" value=\"DEFAULT\" />\r\n      <option name=\"requiredFeatures\" value=\"true\" />\r\n      <option name=\"allFeatures\" value=\"false\" />\r\n      <option name=\"withSudo\" value=\"false\" />\r\n      <option name=\"buildTarget\" value=\"REMOTE\" />\r\n      <option name=\"backtrace\" value=\"SHORT\" />\r\n      <envs />\r\n      <option name=\"isRedirectInput\" value=\"false\" />\r\n      <option name=\"redirectInputPath\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"CARGO.BUILD_TASK_PROVIDER\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Test rust-mysql-crud-sqlx\" type=\"CargoCommandRunConfiguration\" factoryName=\"Cargo Command\">\r\n      <option name=\"command\" value=\"test --workspace\" />\r\n      <option name=\"workingDirectory\" value=\"file://$PROJECT_DIR$\" />\r\n      <option name=\"emulateTerminal\" value=\"true\" />\r\n      <option name=\"channel\" value=\"DEFAULT\" />\r\n      <option name=\"requiredFeatures\" value=\"true\" />\r\n      <option name=\"allFeatures\" value=\"false\" />\r\n      <option name=\"withSudo\" value=\"false\" />\r\n      <option name=\"buildTarget\" value=\"REMOTE\" />\r\n      <option name=\"backtrace\" value=\"SHORT\" />\r\n      <envs />\r\n      <option name=\"isRedirectInput\" value=\"false\" />\r\n      <option name=\"redirectInputPath\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"CARGO.BUILD_TASK_PROVIDER\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings />\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"docker-compose.yml: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"docker-compose.yml.mysql: Compose Deployment\" type=\"docker-deploy\" factoryName=\"docker-compose.yml\" temporary=\"true\" server-name=\"Docker\">\r\n      <deployment type=\"docker-compose.yml\">\r\n        <settings>\r\n          <option name=\"envFilePath\" value=\"\" />\r\n          <option name=\"services\">\r\n            <list>\r\n              <option value=\"mysql\" />\r\n            </list>\r\n          </option>\r\n          <option name=\"sourceFilePath\" value=\"docker-compose.yml\" />\r\n        </settings>\r\n      </deployment>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Docker.docker-compose.yml: Compose Deployment\" />\r\n        <item itemvalue=\"Docker.docker-compose.yml.mysql: Compose Deployment\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"RustProjectSettings\">\r\n    <option name=\"toolchainHomeDirectory\" value=\"$USER_HOME$/.cargo/bin\" />\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"c00710fb-36ca-4b06-883a-6c942bc61b03\" name=\"Changes\" comment=\"\" />\r\n      <created>1699707665208</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1699707665208</updated>\r\n      <workItem from=\"1699707666314\" duration=\"5075000\" />\r\n      <workItem from=\"1699713369758\" duration=\"1127000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0280e4e6a92ea342520b881848b398c2511d49a3)
++++ b/.idea/workspace.xml	(date 1699891396063)
+@@ -8,6 +8,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="c00710fb-36ca-4b06-883a-6c942bc61b03" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/RoadMasterAPI-RUST.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RoadMasterAPI-RUST.iml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -32,32 +33,39 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Cargo.Run rust-mysql-crud-sqlx.executor": "Run",
+-    "Docker.docker-compose.yml.mysql: Compose Deployment.executor": "Run",
+-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "main",
+-    "last_opened_file_path": "C:/Users/Home/Desktop/RoadMasterAPI-RUST",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Cargo.Run rust-mysql-crud-sqlx.executor&quot;: &quot;Run&quot;,
++    &quot;Docker.docker-compose.yml.mysql: Compose Deployment.executor&quot;: &quot;Run&quot;,
++    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Home/Desktop/RoadMasterAPI-RUST&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;language.rust&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  },
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;mysql&quot;
++    ]
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+     <configuration name="Run rust-mysql-crud-sqlx" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+       <option name="command" value="run --package rust-mysql-crud-sqlx --bin rust-mysql-crud-sqlx" />
+       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+-      <option name="emulateTerminal" value="true" />
+       <option name="channel" value="DEFAULT" />
+       <option name="requiredFeatures" value="true" />
+       <option name="allFeatures" value="false" />
++      <option name="emulateTerminal" value="true" />
+       <option name="withSudo" value="false" />
+       <option name="buildTarget" value="REMOTE" />
+       <option name="backtrace" value="SHORT" />
+@@ -71,10 +79,10 @@
+     <configuration name="Test rust-mysql-crud-sqlx" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+       <option name="command" value="test --workspace" />
+       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+-      <option name="emulateTerminal" value="true" />
+       <option name="channel" value="DEFAULT" />
+       <option name="requiredFeatures" value="true" />
+       <option name="allFeatures" value="false" />
++      <option name="emulateTerminal" value="true" />
+       <option name="withSudo" value="false" />
+       <option name="buildTarget" value="REMOTE" />
+       <option name="backtrace" value="SHORT" />
+@@ -122,6 +130,7 @@
+   </component>
+   <component name="RustProjectSettings">
+     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
++    <option name="version" value="2" />
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -133,10 +142,36 @@
+       <updated>1699707665208</updated>
+       <workItem from="1699707666314" duration="5075000" />
+       <workItem from="1699713369758" duration="1127000" />
++      <workItem from="1699716132951" duration="2172000" />
++      <workItem from="1699718383763" duration="76000" />
++      <workItem from="1699718474413" duration="82000" />
++      <workItem from="1699718573358" duration="1425000" />
++      <workItem from="1699720033656" duration="256000" />
++      <workItem from="1699720321615" duration="438000" />
++      <workItem from="1699720800720" duration="694000" />
++      <workItem from="1699721539458" duration="165000" />
++      <workItem from="1699729983385" duration="1923000" />
++      <workItem from="1699736197098" duration="6060000" />
++      <workItem from="1699803690105" duration="2458000" />
+     </task>
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
++  </component>
+ </project>
+\ No newline at end of file
