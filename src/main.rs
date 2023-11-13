@@ -1,5 +1,6 @@
-mod handler;
+mod UserHandler;
 mod model;
+mod helper;
 
 use actix_cors::Cors;
 use actix_web::middleware::Logger;
@@ -26,16 +27,16 @@ async fn main() -> std::io::Result<()> {
         .await
     {
         Ok(pool) => {
-            println!("✅Connection to the database is successful!");
+            println!("Connection to the database is successful!");
             pool
         }
         Err(err) => {
-            println!("🔥 Failed to connect to the database: {:?}", err);
+            println!("Failed to connect to the database: {:?}", err);
             std::process::exit(1);
         }
     };
 
-    println!("🚀 Server started successfully");
+    println!("Server started successfully");
 
     HttpServer::new(move || {
         let cors = Cors::default()
@@ -49,7 +50,7 @@ async fn main() -> std::io::Result<()> {
             .supports_credentials();
         App::new()
             .app_data(web::Data::new(AppState { db: pool.clone() }))
-            .configure(handler::config)
+            .configure(UserHandler::config)
             .wrap(cors)
             .wrap(Logger::default())
     })
