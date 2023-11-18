@@ -36,6 +36,23 @@ pub struct ResetPasswordRequest {
     pub repeat_new_password: String,
 }
 
+#[derive(Debug, Deserialize, Serialize)]
+pub struct LoggedInUserRequest {
+    pub id: String
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct ResultResponse {
+    pub category: String,
+    pub nr_correct: i32,
+    pub result_test: String
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct ListResultResponse {
+    pub histories: Vec<ResultResponse>
+}
+
 impl<T> ApiResponse<T> {
     pub fn success(data: T, text: &str) -> Self {
         ApiResponse {

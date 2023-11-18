@@ -5,7 +5,8 @@ use sqlx::MySqlPool;
 use crate::{
     AppState,
     helper::{hash_password, is_valid_email},
-    model::{ApiResponse, LoginRequest, RegisterUserRequest, RegisterUserResponse, ResetPasswordRequest},
+    model::{ApiResponse, LoginRequest, RegisterUserRequest, RegisterUserResponse,
+            ResetPasswordRequest, LoggedInUserRequest, ResultResponse, ListResultResponse},
 };
 
 #[post("/register")]
@@ -159,6 +160,57 @@ async fn reset_password_handler(
     }
 }
 
+#[post("/history")]
+async fn history_handler(
+    body: web::Json<LoggedInUserRequest>,
+    data: web::Data<AppState>,
+) -> impl Responder {
+
+    let history_result = sqlx::query_as!(
+        ResultResponse,
+        "SELECT category, nr_correct, result_test FROM results WHERE user_id = ?",
+        &body.id
+    )
+        .fetch_all(&data.db)
+        .await;
+
+
+    match history_result {
+        Ok(histories) => {
+            let mut history_list: Vec<ResultResponse> = Vec::new();
+
+            for history in histories.iter() {
+                let category = history.category.clone();
+                let nr_correct = history.nr_correct;
+                let result_test = history.result_test.clone();
+
+                let result = ResultResponse {
+                    category,
+                    nr_correct,
+                    result_test,
+                };
+
+               history_list.push(result)
+            }
+
+            let response: ApiResponse<ListResultResponse>  = ApiResponse::success(
+                ListResultResponse {
+                    histories: history_list
+                },
+                "History retrieved successfully",
+            );
+
+            HttpResponse::Ok().json(response)
+        }
+        Err(err) => {
+            let error_message = format!("Failed to retrieve history: {:?}", err);
+            let response: ApiResponse<()> = ApiResponse::error(&error_message);
+            HttpResponse::InternalServerError().json(response)
+        }
+    }
+
+}
+
 
 async fn get_actual_password_from_database(db: &MySqlPool, email: String) -> String {
     sqlx::query_scalar!("SELECT password FROM users WHERE email = ?", email)
@@ -189,7 +241,8 @@ pub fn config(conf: &mut web::ServiceConfig) {
     let scope = web::scope("/api")
         .service(register_handler)
         .service(login_handler)
-        .service(reset_password_handler);
+        .service(reset_password_handler)
+        .service(history_handler);
 
     conf.service(scope);
 }
