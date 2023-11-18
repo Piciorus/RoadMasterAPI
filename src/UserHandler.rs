@@ -168,7 +168,7 @@ async fn history_handler(
 
     let history_result = sqlx::query_as!(
         ResultResponse,
-        "SELECT category, nr_correct, result_test FROM results WHERE user_id = ?",
+        "SELECT category, nr_correct, result_test, date_test FROM results WHERE user_id = ?",
         &body.id
     )
         .fetch_all(&data.db)
@@ -183,11 +183,13 @@ async fn history_handler(
                 let category = history.category.clone();
                 let nr_correct = history.nr_correct;
                 let result_test = history.result_test.clone();
+                let date_test = history.date_test.clone();
 
                 let result = ResultResponse {
                     category,
                     nr_correct,
                     result_test,
+                    date_test,
                 };
 
                history_list.push(result)

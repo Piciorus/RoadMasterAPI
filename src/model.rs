@@ -1,3 +1,4 @@
+use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -45,7 +46,8 @@ pub struct LoggedInUserRequest {
 pub struct ResultResponse {
     pub category: String,
     pub nr_correct: i32,
-    pub result_test: String
+    pub result_test: String,
+    pub date_test: Option<DateTime<Utc>>
 }
 
 #[derive(Debug, Deserialize, Serialize)]
