@@ -1,7 +1,4 @@
-use actix_web::{post, web, HttpResponse, Responder};
-use bcrypt::verify;
-use sqlx::MySqlPool;
-
+use crate::model::Question;
 use crate::{
     helper::{hash_password, is_valid_email},
     model::{
@@ -10,6 +7,29 @@ use crate::{
     },
     AppState,
 };
+use actix_web::{get, post, web, HttpResponse, Responder};
+use bcrypt::verify;
+use sqlx::MySqlPool;
+
+#[get("/question")]
+async fn question_handler() -> impl Responder {
+    let response = ApiResponse::success(
+        Question {
+            id: 1,
+            category: "jmekerie".to_string(),
+            text: "te bulesc?".to_string(),
+            correct_answer: "da".to_string(),
+            wrong_answers: vec![
+                "nu".to_string(),
+                "poate".to_string(),
+                "ma mai gandesc".to_string(),
+            ],
+        },
+        "Bv boss",
+    );
+
+    HttpResponse::Ok().json(response)
+}
 
 #[post("/register")]
 async fn register_handler(

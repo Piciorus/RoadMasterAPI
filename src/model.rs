@@ -55,6 +55,15 @@ pub struct ListResultResponse {
     pub histories: Vec<ResultResponse>,
 }
 
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Question{
+    pub id: u32,
+    pub category : String,
+    pub text: String,
+    pub correct_answer : String,
+    pub wrong_answers : Vec<String>
+}
+
 impl<T> ApiResponse<T> {
     pub fn success(data: T, text: &str) -> Self {
         ApiResponse {
