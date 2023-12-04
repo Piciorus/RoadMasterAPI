@@ -1,5 +1,5 @@
+use bcrypt::{hash, DEFAULT_COST};
 use regex::Regex;
-use bcrypt::{DEFAULT_COST, hash};
 
 pub(crate) fn is_valid_email(email: &str) -> bool {
     let email_regex = Regex::new(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$").unwrap();

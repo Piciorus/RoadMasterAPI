@@ -1,12 +1,14 @@
-use actix_web::{HttpResponse, post, Responder, web};
+use actix_web::{post, web, HttpResponse, Responder};
 use bcrypt::verify;
 use sqlx::MySqlPool;
 
 use crate::{
-    AppState,
     helper::{hash_password, is_valid_email},
-    model::{ApiResponse, LoginRequest, RegisterUserRequest, RegisterUserResponse,
-            ResetPasswordRequest, LoggedInUserRequest, ResultResponse, ListResultResponse},
+    model::{
+        ApiResponse, ListResultResponse, LoggedInUserRequest, LoginRequest, RegisterUserRequest,
+        RegisterUserResponse, ResetPasswordRequest, ResultResponse,
+    },
+    AppState,
 };
 
 #[post("/register")]
@@ -14,7 +16,6 @@ async fn register_handler(
     body: web::Json<RegisterUserRequest>,
     data: web::Data<AppState>,
 ) -> impl Responder {
-
     if !is_valid_email(&body.email) {
         let response: ApiResponse<()> = ApiResponse::error("Invalid email format");
         return HttpResponse::BadRequest().json(response);
@@ -24,29 +25,27 @@ async fn register_handler(
         "SELECT COUNT(*) as count FROM users WHERE email = ?",
         &body.email
     )
-        .fetch_one(&data.db)
-        .await
-        .map(|result| result.count > 0)
-        .unwrap_or(false);
+    .fetch_one(&data.db)
+    .await
+    .map(|result| result.count > 0)
+    .unwrap_or(false);
 
     if email_exists {
-        let response: ApiResponse<()> =
-            ApiResponse::error("Email address is already registered");
+        let response: ApiResponse<()> = ApiResponse::error("Email address is already registered");
         return HttpResponse::Conflict().json(response);
     }
 
     let user_id = uuid::Uuid::new_v4().to_string();
     let hashed_password = hash_password(&body.password.to_owned());
 
-    let query_result = sqlx::query(
-        r#"INSERT INTO users (id, username, email, password) VALUES (?, ?, ?, ?)"#,
-    )
-        .bind(user_id.clone())
-        .bind(body.username.to_owned())
-        .bind(body.email.to_owned())
-        .bind(hashed_password)
-        .execute(&data.db)
-        .await;
+    let query_result =
+        sqlx::query(r#"INSERT INTO users (id, username, email, password) VALUES (?, ?, ?, ?)"#)
+            .bind(user_id.clone())
+            .bind(body.username.to_owned())
+            .bind(body.email.to_owned())
+            .bind(hashed_password)
+            .execute(&data.db)
+            .await;
 
     match query_result {
         Ok(_) => {
@@ -71,19 +70,14 @@ async fn register_handler(
     }
 }
 
-
 #[post("/login")]
-async fn login_handler(
-    body: web::Json<LoginRequest>,
-    data: web::Data<AppState>,
-) -> impl Responder {
-
+async fn login_handler(body: web::Json<LoginRequest>, data: web::Data<AppState>) -> impl Responder {
     let result = sqlx::query!(
         "SELECT id, password FROM users WHERE email = ?",
         &body.email
     )
-        .fetch_optional(&data.db)
-        .await;
+    .fetch_optional(&data.db)
+    .await;
 
     match result {
         Ok(Some(user)) => {
@@ -91,7 +85,8 @@ async fn login_handler(
                 let response = ApiResponse::success(
                     RegisterUserResponse {
                         id: get_id_from_database_by_password(&data.db, body.email.clone()).await,
-                        username: get_actual_username_from_database(&data.db, body.email.clone()).await,
+                        username: get_actual_username_from_database(&data.db, body.email.clone())
+                            .await,
                         email: body.email.clone(),
                         password: body.password.clone(),
                     },
@@ -123,7 +118,6 @@ async fn reset_password_handler(
     body: web::Json<ResetPasswordRequest>,
     data: web::Data<AppState>,
 ) -> impl Responder {
-
     let actual_password = get_actual_password_from_database(&data.db, body.email.clone()).await;
     let actual_id = get_id_from_database_by_password(&data.db, body.email.clone()).await;
 
@@ -139,9 +133,7 @@ async fn reset_password_handler(
 
     let hashed_new_password = hash_password(&body.new_password);
 
-    let update_result = sqlx::query(
-        "UPDATE users SET password = ? WHERE id = ?",
-    )
+    let update_result = sqlx::query("UPDATE users SET password = ? WHERE id = ?")
         .bind(hashed_new_password)
         .bind(actual_id)
         .execute(&data.db)
@@ -165,15 +157,13 @@ async fn history_handler(
     body: web::Json<LoggedInUserRequest>,
     data: web::Data<AppState>,
 ) -> impl Responder {
-
     let history_result = sqlx::query_as!(
         ResultResponse,
         "SELECT category, nr_correct, result_test, date_test FROM results WHERE user_id = ?",
         &body.id
     )
-        .fetch_all(&data.db)
-        .await;
-
+    .fetch_all(&data.db)
+    .await;
 
     match history_result {
         Ok(histories) => {
@@ -192,12 +182,12 @@ async fn history_handler(
                     date_test,
                 };
 
-               history_list.push(result)
+                history_list.push(result)
             }
 
-            let response: ApiResponse<ListResultResponse>  = ApiResponse::success(
+            let response: ApiResponse<ListResultResponse> = ApiResponse::success(
                 ListResultResponse {
-                    histories: history_list
+                    histories: history_list,
                 },
                 "History retrieved successfully",
             );
@@ -210,9 +200,7 @@ async fn history_handler(
             HttpResponse::InternalServerError().json(response)
         }
     }
-
 }
-
 
 async fn get_actual_password_from_database(db: &MySqlPool, email: String) -> String {
     sqlx::query_scalar!("SELECT password FROM users WHERE email = ?", email)
@@ -228,12 +216,8 @@ async fn get_actual_username_from_database(db: &MySqlPool, email: String) -> Str
         .unwrap_or_default()
 }
 
-
 async fn get_id_from_database_by_password(db: &MySqlPool, email: String) -> String {
-    sqlx::query_scalar!(
-        "SELECT id FROM users WHERE email = ?",
-        email
-    )
+    sqlx::query_scalar!("SELECT id FROM users WHERE email = ?", email)
         .fetch_one(db)
         .await
         .unwrap_or_default()

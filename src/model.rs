@@ -31,7 +31,7 @@ pub struct ApiResponse<T> {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ResetPasswordRequest {
-    pub email:String,
+    pub email: String,
     pub old_password: String,
     pub new_password: String,
     pub repeat_new_password: String,
@@ -39,7 +39,7 @@ pub struct ResetPasswordRequest {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct LoggedInUserRequest {
-    pub id: String
+    pub id: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -47,12 +47,12 @@ pub struct ResultResponse {
     pub category: String,
     pub nr_correct: i32,
     pub result_test: String,
-    pub date_test: Option<DateTime<Utc>>
+    pub date_test: Option<DateTime<Utc>>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct ListResultResponse {
-    pub histories: Vec<ResultResponse>
+    pub histories: Vec<ResultResponse>,
 }
 
 impl<T> ApiResponse<T> {
