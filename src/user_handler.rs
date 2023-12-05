@@ -13,6 +13,7 @@ use sqlx::MySqlPool;
 
 #[get("/question")]
 async fn question_handler() -> impl Responder {
+    println!("trimte intrebare");
     let response = ApiResponse::success(
         Question {
             id: 1,
@@ -248,7 +249,8 @@ pub fn config(conf: &mut web::ServiceConfig) {
         .service(register_handler)
         .service(login_handler)
         .service(reset_password_handler)
-        .service(history_handler);
+        .service(history_handler)
+        .service(question_handler);
 
     conf.service(scope);
 }

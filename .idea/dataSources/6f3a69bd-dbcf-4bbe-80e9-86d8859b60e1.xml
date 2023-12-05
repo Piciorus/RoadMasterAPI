@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="RoadMasterDB">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.43">
-    <root id="1">
-      <DefaultCasing>exact</DefaultCasing>
-      <DefaultEngine>InnoDB</DefaultEngine>
-      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>rust\\_sqlx|schema||admin||ALTER|G
-rust\\_sqlx|schema||admin||ALTER ROUTINE|G
-rust\\_sqlx|schema||admin||CREATE|G
-rust\\_sqlx|schema||admin||CREATE ROUTINE|G
-rust\\_sqlx|schema||admin||CREATE TEMPORARY TABLES|G
-rust\\_sqlx|schema||admin||CREATE VIEW|G
-rust\\_sqlx|schema||admin||DELETE|G
-rust\\_sqlx|schema||admin||DROP|G
-rust\\_sqlx|schema||admin||EVENT|G
-rust\\_sqlx|schema||admin||EXECUTE|G
-rust\\_sqlx|schema||admin||INDEX|G
-rust\\_sqlx|schema||admin||INSERT|G
-rust\\_sqlx|schema||admin||LOCK TABLES|G
-rust\\_sqlx|schema||admin||REFERENCES|G
-rust\\_sqlx|schema||admin||SELECT|G
-rust\\_sqlx|schema||admin||SHOW VIEW|G
-rust\\_sqlx|schema||admin||TRIGGER|G
-rust\\_sqlx|schema||admin||UPDATE|G</Grants>
-      <ServerVersion>8.2.0</ServerVersion>
-    </root>
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.50">
+    <root id="1"/>
     <collation id="2" parent="1" name="armscii8_general_ci">
       <Charset>armscii8</Charset>
       <DefaultForCharset>1</DefaultForCharset>
@@ -944,33 +921,33 @@ rust\\_sqlx|schema||admin||UPDATE|G</Grants>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <column id="294" parent="292" name="version">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="295" parent="292" name="description">
-      <DataType>text|0s</DataType>
+      <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
     <column id="296" parent="292" name="installed_on">
-      <DataType>timestamp|0s</DataType>
+      <DasType>timestamp|0s</DasType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="297" parent="292" name="success">
-      <DataType>tinyint(1)|0s</DataType>
+      <DasType>tinyint(1)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
     <column id="298" parent="292" name="checksum">
-      <DataType>blob|0s</DataType>
+      <DasType>blob|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
     <column id="299" parent="292" name="execution_time">
-      <DataType>bigint|0s</DataType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
@@ -985,32 +962,32 @@ rust\\_sqlx|schema||admin||UPDATE|G</Grants>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="302" parent="293" name="id">
-      <DataType>varchar(255)|0s</DataType>
+      <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
     <column id="303" parent="293" name="username">
-      <DataType>varchar(255)|0s</DataType>
+      <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
     <column id="304" parent="293" name="email">
-      <DataType>varchar(255)|0s</DataType>
+      <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
     <column id="305" parent="293" name="password">
-      <DataType>varchar(255)|0s</DataType>
+      <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
     <column id="306" parent="293" name="created_at">
-      <DataType>timestamp|0s</DataType>
+      <DasType>timestamp|0s</DasType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <Position>5</Position>
     </column>
     <column id="307" parent="293" name="updated_at">
-      <DataType>timestamp|0s</DataType>
+      <DasType>timestamp|0s</DasType>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
       <Position>6</Position>
