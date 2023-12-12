@@ -13,7 +13,7 @@ use rand::random;
 use rand::seq::SliceRandom;
 use sqlx::MySqlPool;
 
-#[get("/question")]
+#[post("/question")]
 async fn question_handler(
     body: web::Json<GetQuestionRequest>,
     data: web::Data<AppState>,
