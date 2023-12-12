@@ -1776,6 +1776,7 @@ dependencies = [
  "chrono",
  "dotenv",
  "env_logger",
+ "rand",
  "regex",
  "serde",
  "serde_json",

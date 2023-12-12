@@ -1,4 +1,4 @@
-use crate::model::Question;
+use crate::model::{GetQuestionRequest, MultipleChoiceQuestion, SingleChoiceQuestion};
 use crate::{
     helper::{hash_password, is_valid_email},
     model::{
@@ -9,27 +9,90 @@ use crate::{
 };
 use actix_web::{get, post, web, HttpResponse, Responder};
 use bcrypt::verify;
+use rand::random;
+use rand::seq::SliceRandom;
 use sqlx::MySqlPool;
 
 #[get("/question")]
-async fn question_handler() -> impl Responder {
-    println!("trimte intrebare");
-    let response = ApiResponse::success(
-        Question {
-            id: 1,
-            category: "jmekerie".to_string(),
-            text: "te bulesc?".to_string(),
-            correct_answer: "da".to_string(),
-            wrong_answers: vec![
-                "nu".to_string(),
-                "poate".to_string(),
-                "ma mai gandesc".to_string(),
-            ],
-        },
-        "Bv boss",
-    );
+async fn question_handler(
+    body: web::Json<GetQuestionRequest>,
+    data: web::Data<AppState>,
+) -> impl Responder {
+    let response = match random::<i32>() % 2 {
+        0 => {
+            let question_result = sqlx::query!(
+                "SELECT * FROM single_choice_questions WHERE category = ?",
+                &body.category
+            )
+            .fetch_all(&data.db)
+            .await
+            .unwrap();
 
-    HttpResponse::Ok().json(response)
+            let question = question_result.choose(&mut rand::thread_rng()).unwrap();
+
+            let response: ApiResponse<SingleChoiceQuestion> = ApiResponse::success(
+                SingleChoiceQuestion {
+                    id: question.id.clone(),
+                    text: question.text.clone(),
+                    category: question.category.clone(),
+                    correct_answer: question.correct_answer.clone(),
+                    wrong_answers: vec![
+                        question.wrong_answer1.clone(),
+                        question.wrong_answer2.clone(),
+                        question.wrong_answer3.clone(),
+                    ],
+                },
+                "Bv boss",
+            );
+
+            HttpResponse::Ok().json(response)
+        }
+        1 => {
+            let question_result = sqlx::query!(
+                "SELECT * FROM multiple_choice_questions WHERE category = ?",
+                &body.category
+            )
+            .fetch_all(&data.db)
+            .await
+            .unwrap();
+
+            let question = question_result.choose(&mut rand::thread_rng()).unwrap();
+
+            let to_bool = |i: i8| -> bool { i != 0 };
+
+            let response = ApiResponse::success(
+                MultipleChoiceQuestion {
+                    id: question.id.clone(),
+                    category: question.category.clone(),
+                    text: question.text.clone(),
+                    answers: vec![
+                        (
+                            question.answer1.clone(),
+                            to_bool(question.is_correct_answer_1),
+                        ),
+                        (
+                            question.answer2.clone(),
+                            to_bool(question.is_correct_answer_2),
+                        ),
+                        (
+                            question.answer3.clone(),
+                            to_bool(question.is_correct_answer_3),
+                        ),
+                        (
+                            question.answer4.clone(),
+                            to_bool(question.is_correct_answer_4),
+                        ),
+                    ],
+                },
+                "Bv boss",
+            );
+
+            HttpResponse::Ok().json(response)
+        }
+        _ => panic!(),
+    };
+
+    response
 }
 
 #[post("/register")]

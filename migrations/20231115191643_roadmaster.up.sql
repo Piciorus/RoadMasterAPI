@@ -13,24 +13,29 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS questions (
+    IF NOT EXISTS single_choice_questions (
         id VARCHAR(255) PRIMARY KEY NOT NULL,
         category VARCHAR(255) NOT NULL,
         text VARCHAR(255) NOT NULL,
-        question_type VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        correct_answer VARCHAR(255) NOT NULL,
+        wrong_answer1 VARCHAR(255) NOT NULL,
+        wrong_answer2 VARCHAR(255) NOT NULL,
+        wrong_answer3 VARCHAR(255) NOT NULL
     );
 
 CREATE TABLE
-    IF NOT EXISTS answers (
+    IF NOT EXISTS multiple_choice_questions (
         id VARCHAR(255) PRIMARY KEY NOT NULL,
-        question_id VARCHAR(255) NOT NULL,
+        category VARCHAR(255) NOT NULL,
         text VARCHAR(255) NOT NULL,
-        answer_state INT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (question_id) REFERENCES questions(id)
+        answer1 VARCHAR(255) NOT NULL,
+        answer2 VARCHAR(255) NOT NULL,
+        answer3 VARCHAR(255) NOT NULL,
+        answer4 VARCHAR(255) NOT NULL,
+        is_correct_answer_1 BOOLEAN NOT NULL,
+        is_correct_answer_2 BOOLEAN NOT NULL,
+        is_correct_answer_3 BOOLEAN NOT NULL,
+        is_correct_answer_4 BOOLEAN NOT NULL
     );
 
 CREATE TABLE

@@ -17,6 +17,11 @@ pub struct RegisterUserRequest {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
+pub struct GetQuestionRequest {
+    pub category: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
 pub struct LoginRequest {
     pub email: String,
     pub password: String,
@@ -56,12 +61,20 @@ pub struct ListResultResponse {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct Question{
-    pub id: u32,
-    pub category : String,
+pub struct SingleChoiceQuestion {
+    pub id: String,
+    pub category: String,
     pub text: String,
-    pub correct_answer : String,
-    pub wrong_answers : Vec<String>
+    pub correct_answer: String,
+    pub wrong_answers: Vec<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct MultipleChoiceQuestion {
+    pub id: String,
+    pub category: String,
+    pub text: String,
+    pub answers: Vec<(String, bool)>,
 }
 
 impl<T> ApiResponse<T> {
