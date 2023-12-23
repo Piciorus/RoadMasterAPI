@@ -66,70 +66,70 @@ CREATE TABLE
     );
 
 
-INSERT INTO countries (id, name) VALUES ('1', 'Germany');
-INSERT INTO countries (id, name) VALUES ('2', 'France');
-INSERT INTO countries (id, name) VALUES ('3', 'Italy');
-INSERT INTO countries (id, name) VALUES ('4', 'Spain');
-INSERT INTO countries (id, name) VALUES ('5', 'United Kingdom');
-INSERT INTO countries (id, name) VALUES ('6', 'Japan');
+INSERT INTO countries (id, name) VALUES ('1', 'Germania');
+INSERT INTO countries (id, name) VALUES ('2', 'Franța');
+INSERT INTO countries (id, name) VALUES ('3', 'Italia');
+INSERT INTO countries (id, name) VALUES ('4', 'Spania');
+INSERT INTO countries (id, name) VALUES ('5', 'Regatul Unit al Marii Britanii si Irlandei de Nord');
+INSERT INTO countries (id, name) VALUES ('6', 'Japonia');
 INSERT INTO countries (id, name) VALUES ('7', 'China');
-INSERT INTO countries (id, name) VALUES ('8', 'United States');
+INSERT INTO countries (id, name) VALUES ('8', 'Statele Unite ale Americii');
 INSERT INTO countries (id, name) VALUES ('9', 'Canada');
 
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('1', '1', 'In Germany, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('2', '1', 'Speed limits on the Autobahn are recommended but not mandatory.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('3', '1', 'Driving under the influence of alcohol is strictly prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('4', '1', 'Seat belts are mandatory for all occupants.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('5', '1', 'Traffic signals and signs must be strictly obeyed.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('1', '1', 'În Germania, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('2', '1', 'Limitele de viteză de pe Autostrada sunt recomandate, dar nu obligatorii.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('3', '1', 'Conducerea sub influența alcoolului este strict interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('4', '1', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('5', '1', 'Semnalele și indicatoarele de circulație trebuie respectate strict.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('6', '2', 'In France, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('7', '2', 'Speeding fines are substantial, especially in residential areas.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('8', '2', 'Alcohol limit for drivers is 0.05% BAC.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('9', '2', 'Children under 10 must use a child restraint system.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('10', '2', 'Toll roads are common in France, and payment is required at toll booths.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('6', '2', 'În Franța, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('7', '2', 'Amenzile pentru depășirea vitezei sunt substanțiale, în special în zonele rezidențiale.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('8', '2', 'Limita de alcoolem pentru șoferi este de 0,05% BAC.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('9', '2', 'Copiii sub 10 ani trebuie să folosească un sistem de reținere pentru copii.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('10', '2', 'Autostrăzile cu taxă sunt comune în Franța, iar plata este obligatorie la punctele de taxare.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('11', '3', 'In Italy, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('12', '3', 'ZTL (Limited Traffic Zones) have restricted access in many cities.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('13', '3', 'Traffic fines are on-the-spot and can be substantial.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('14', '3', 'Drivers must use headlights outside urban areas, even during the day.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('15', '3', 'Motorcycles must use headlights at all times.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('11', '3', 'În Italia, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('12', '3', 'ZTL (Zone cu trafic limitat) au acces restricționat în multe orașe.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('13', '3', 'Amenzile de circulație sunt plătite pe loc și pot fi substanțiale.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('14', '3', 'Șoferii trebuie să folosească luminile de întâlnire în afara zonelor urbane, chiar și în timpul zilei.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('15', '3', 'Motocicletele trebuie să folosească luminile de întâlnire tot timpul.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('16', '4', 'In Spain, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('17', '4', 'Parking in designated Blue Zones requires a special permit.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('18', '4', 'Alcohol limit for drivers is 0.05% BAC.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('19', '4', 'Using a mobile phone without a hands-free system is prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('20', '4', 'Children under 12 must use a child restraint system.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('16', '4', 'În Spania, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('17', '4', 'Parcarea în zonele albastre desemnate necesită un permis special.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('18', '4', 'Limita de alcoolem pentru șoferi este de 0,05% BAC.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('19', '4', 'Folosirea telefonului mobil fără sistem hands-free este interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('20', '4', 'Copiii sub 12 ani trebuie să folosească un sistem de reținere pentru copii.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('21', '5', 'In the UK, you drive on the left side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('22', '5', 'Speed limits are posted in miles per hour.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('23', '5', 'Seat belts are mandatory for all occupants.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('24', '5', 'Driving under the influence of alcohol or drugs is strictly prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('25', '5', 'Using a mobile phone while driving is illegal.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('21', '5', 'În Marea Britanie, se conduce pe partea stângă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('22', '5', 'Limitele de viteză sunt afișate în mile pe oră.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('23', '5', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('24', '5', 'Conducerea sub influența alcoolului sau a drogurilor este strict interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('25', '5', 'Utilizarea telefonului mobil în timpul conducții este ilegală.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('26', '6', 'In Japan, you drive on the left side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('27', '6', 'Strict enforcement of speed limits, especially in urban areas.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('28', '6', 'Speeding fines are high, and radar traps are common.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('29', '6', 'Headlights must be on while driving, even during the day.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('30', '6', 'Traffic lights use a blue signal instead of green.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('26', '6', 'În Japonia, se conduce pe partea stângă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('27', '6', 'Supravegherea strictă a limitelor de viteză, în special în zonele urbane.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('28', '6', 'Amenzile pentru depășirea vitezei sunt mari, iar radarele sunt comune.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('29', '6', 'Farurile trebuie să fie aprinse în timpul condusului, chiar și în timpul zilei.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('30', '6', 'Semnalele de circulație folosesc o lumină albastră în loc de verde.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('31', '7', 'In China, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('32', '7', 'Strict enforcement of speed limits.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('33', '7', 'Driving under the influence of alcohol is strictly prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('34', '7', 'Seat belts are mandatory for all occupants.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('35', '7', 'Traffic rules are strictly enforced.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('31', '7', 'În China, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('32', '7', 'Supravegherea strictă a limitelor de viteză.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('33', '7', 'Conducerea sub influența alcoolului este strict interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('34', '7', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('35', '7', 'Regulile de trafic sunt strict aplicate.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('36', '8', 'In the U.S., you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('37', '8', 'Speed limits vary by state and road type.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('38', '8', 'Seat belts are mandatory for all occupants.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('39', '8', 'Driving under the influence of alcohol is strictly prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('40', '8', 'Traffic rules are enforced by state and local authorities.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('36', '8', 'În SUA, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('37', '8', 'Limitele de viteză variază în funcție de stat și tipul de drum.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('38', '8', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('39', '8', 'Conducerea sub influența alcoolului este strict interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('40', '8', 'Regulile de trafic sunt aplicate de autoritățile statale și locale.');
 
-INSERT INTO countries_info (id, country_id, text) VALUES ('41', '9', 'In Canada, you drive on the right side of the road.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('42', '9', 'Speed limits vary by province and territory.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('43', '9', 'Seat belts are mandatory for all occupants.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('44', '9', 'Driving under the influence of alcohol is strictly prohibited.');
-INSERT INTO countries_info (id, country_id, text) VALUES ('45', '9', 'Traffic rules are enforced by provincial and municipal authorities.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('41', '9', 'În Canada, se conduce pe partea dreaptă a drumului.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('42', '9', 'Limitele de viteză variază în funcție de provincie și teritoriu.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('43', '9', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('44', '9', 'Conducerea sub influența alcoolului este strict interzisă.');
+INSERT INTO countries_info (id, country_id, text) VALUES ('45', '9', 'Regulile de trafic sunt aplicate de autoritățile provinciale și municipale.');
 
 
 
