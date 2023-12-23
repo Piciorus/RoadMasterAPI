@@ -17,11 +17,11 @@ Cargo.lock,1\4\14a5af756bb04b4a26c80cf95acf32f0f8b9f30f
 Cargo.toml,1\b\1b290eb385892bfd4870c08a785598e98c8691b7
 =
 src/helper.rs,b\0\b0300433bd8c36e5fd288a1ce8e437259fe4b699
-B
-src/UserHandler.rs,6\0\609056d52ff0636b95290011a44f3b652f587745
 8
 Makefile,8\3\836efb6e25a091dcb4ff8e1dbb2f0be6a5cbf14c
 ]
 -migrations/20231115191643_roadmaster.down.sql,7\a\7a73932251e8464a1fc3ff0557cc57a2c8878c0f
 [
 +migrations/20231115191643_roadmaster.up.sql,e\7\e71c2c0463a9f454155f058a11b72fb20a64a0af
+C
+src/user_handler.rs,e\2\e2494be2f78090d763123b256e5edf799f34ea90

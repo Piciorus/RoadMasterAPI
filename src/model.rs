@@ -77,6 +77,27 @@ pub struct MultipleChoiceQuestion {
     pub answers: Vec<(String, bool)>,
 }
 
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Country {
+    pub id: String,
+    pub name: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct CountriesResponse {
+    pub countries: Vec<Country>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct CountryInfo {
+    pub text: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct CountriesInfoResponse {
+    pub country_info: Vec<String>,
+}
+
 impl<T> ApiResponse<T> {
     pub fn success(data: T, text: &str) -> Self {
         ApiResponse {
