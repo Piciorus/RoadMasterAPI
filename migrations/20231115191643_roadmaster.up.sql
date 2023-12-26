@@ -65,6 +65,11 @@ CREATE TABLE
         FOREIGN KEY (country_id) REFERENCES countries(id)
     );
 
+CREATE TABLE
+    IF NOT EXISTS tips (
+        id VARCHAR(255) PRIMARY KEY NOT NULL,
+        text VARCHAR(255) NOT NULL
+    );
 
 INSERT INTO countries (id, name) VALUES ('1', 'Germania');
 INSERT INTO countries (id, name) VALUES ('2', 'Franța');
@@ -130,6 +135,18 @@ INSERT INTO countries_info (id, country_id, text) VALUES ('42', '9', 'Limitele d
 INSERT INTO countries_info (id, country_id, text) VALUES ('43', '9', 'Centurile de siguranță sunt obligatorii pentru toți ocupanții.');
 INSERT INTO countries_info (id, country_id, text) VALUES ('44', '9', 'Conducerea sub influența alcoolului este strict interzisă.');
 INSERT INTO countries_info (id, country_id, text) VALUES ('45', '9', 'Regulile de trafic sunt aplicate de autoritățile provinciale și municipale.');
+
+INSERT INTO tips (id, text) VALUES
+        ('1', 'Înainte de examenul practic, efectuează simulări de examen cu instructorul tău pentru a te familiariza cu procedurile.'),
+        ('2', 'Încearcă să acumulezi experiență în conducerea pe drumuri naționale, judetene și locale pentru a fi pregătit pentru diverse situații.'),
+        ('3', 'Exersează în mod regulat manevre de marsarier pentru a te simți confortabil în timpul examenului.'),
+        ('4', 'Menține o distanță sigură între mașina ta și cele din față.'),
+        ('5', 'Fii atent la detalii precum reglarea oglinzilor, folosirea centurii de siguranță și respectarea regulilor de prioritate.'),
+        ('6', 'Învață despre funcțiile mașinii tale, inclusiv semnalele de avertizare și indicatorii de bord.'),
+        ('7', 'Exersează conducerea în diferite condiții meteorologice și de trafic pentru a te simți pregătit pentru orice.'),
+        ('8', 'Exerseaza manevrele pentru parcarea cu fata, cu spatele si din lateral.'),
+        ('9', 'Verifică starea mașinii înainte de a porni (lumini, anvelope, frâne).'),
+        ('10', 'Menține o atitudine calmă și încredere în abilitățile tale în timpul examenului.');
 
 
 

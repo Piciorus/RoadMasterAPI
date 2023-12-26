@@ -98,6 +98,16 @@ pub struct CountriesInfoResponse {
     pub country_info: Vec<String>,
 }
 
+#[derive(Debug, Deserialize, Serialize)]
+pub struct Tips {
+    pub text: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+pub struct TipsResponse {
+    pub tips: Vec<String>,
+}
+
 impl<T> ApiResponse<T> {
     pub fn success(data: T, text: &str) -> Self {
         ApiResponse {
