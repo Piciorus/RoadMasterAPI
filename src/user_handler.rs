@@ -1,12 +1,8 @@
 use crate::model::{CountriesInfoResponse, CountriesResponse, Country, CountryInfo, GetQuestionRequest, MultipleChoiceQuestion, SingleChoiceQuestion, Tips, TipsResponse};
-use crate::{
-    helper::{hash_password, is_valid_email},
-    model::{
-        ApiResponse, ListResultResponse, LoggedInUserRequest, LoginRequest, RegisterUserRequest,
-        RegisterUserResponse, ResetPasswordRequest, ResultResponse,
-    },
-    AppState,
-};
+use crate::{helper::{hash_password, is_valid_email}, model::{
+    ApiResponse, ListResultResponse, LoggedInUserRequest, LoginRequest, RegisterUserRequest,
+    RegisterUserResponse, ResetPasswordRequest, ResultResponse,
+}, AppState, model};
 use actix_web::{get, post, web, HttpResponse, Responder};
 use bcrypt::verify;
 use rand::random;
@@ -236,6 +232,40 @@ async fn reset_password_handler(
     }
 }
 
+#[post("/result")]
+async fn result_handler(
+    body: web::Json<model::Result>,
+    data: web::Data<AppState>,
+) -> impl Responder {
+    let id = uuid::Uuid::new_v4().to_string();
+
+    let query_result =
+        sqlx::query(r#"INSERT INTO results (id, user_id, category, nr_correct, nr_wrong, percentage_correct, result_test)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)"#)
+            .bind(id.clone())
+            .bind(body.user_id.clone())
+            .bind(body.category.clone())
+            .bind(body.nr_correct.clone())
+            .bind(body.nr_wrong.clone())
+            .bind(body.percentage_correct.clone())
+            .bind(body.result_test.clone())
+            .execute(&data.db)
+            .await;
+
+    match query_result {
+        Ok(_) => {
+            let response = ApiResponse::success( (), "Result saved successfully", );
+            HttpResponse::Ok().json(response)
+        }
+        Err(err) => {
+            let error_message = format!("Failed to save result: {:?}", err);
+            let response: ApiResponse<()> = ApiResponse::error(&error_message);
+
+            HttpResponse::InternalServerError().json(response)
+        }
+    }
+}
+
 #[post("/history")]
 async fn history_handler(
     body: web::Json<LoggedInUserRequest>,
@@ -439,7 +469,8 @@ pub fn config(conf: &mut web::ServiceConfig) {
         .service(question_handler)
         .service(country_handler)
         .service(country_info_handler)
-        .service(tips_handler);
+        .service(tips_handler)
+        .service(result_handler);
 
     conf.service(scope);
 }
