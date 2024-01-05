@@ -13,17 +13,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS single_choice_questions (
-        id VARCHAR(255) PRIMARY KEY NOT NULL,
-        category VARCHAR(255) NOT NULL,
-        text VARCHAR(255) NOT NULL,
-        correct_answer VARCHAR(255) NOT NULL,
-        wrong_answer1 VARCHAR(255) NOT NULL,
-        wrong_answer2 VARCHAR(255) NOT NULL,
-        wrong_answer3 VARCHAR(255) NOT NULL
-    );
-
-CREATE TABLE
     IF NOT EXISTS multiple_choice_questions (
         id VARCHAR(255) PRIMARY KEY NOT NULL,
         category VARCHAR(255) NOT NULL,

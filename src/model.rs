@@ -71,15 +71,6 @@ pub struct ListResultResponse {
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-pub struct SingleChoiceQuestion {
-    pub id: String,
-    pub category: String,
-    pub text: String,
-    pub correct_answer: String,
-    pub wrong_answers: Vec<String>,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
 pub struct MultipleChoiceQuestion {
     pub id: String,
     pub category: String,

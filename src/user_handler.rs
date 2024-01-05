@@ -1,11 +1,18 @@
-use crate::model::{CountriesInfoResponse, CountriesResponse, Country, CountryInfo, GetQuestionRequest, MultipleChoiceQuestion, SingleChoiceQuestion, Tips, TipsResponse};
-use crate::{helper::{hash_password, is_valid_email}, model::{
-    ApiResponse, ListResultResponse, LoggedInUserRequest, LoginRequest, RegisterUserRequest,
-    RegisterUserResponse, ResetPasswordRequest, ResultResponse,
-}, AppState, model};
+use crate::model::{
+    CountriesInfoResponse, CountriesResponse, Country, CountryInfo, GetQuestionRequest,
+    MultipleChoiceQuestion, Tips, TipsResponse,
+};
+use crate::{
+    helper::{hash_password, is_valid_email},
+    model,
+    model::{
+        ApiResponse, ListResultResponse, LoggedInUserRequest, LoginRequest, RegisterUserRequest,
+        RegisterUserResponse, ResetPasswordRequest, ResultResponse,
+    },
+    AppState,
+};
 use actix_web::{get, post, web, HttpResponse, Responder};
 use bcrypt::verify;
-use rand::random;
 use rand::seq::SliceRandom;
 use sqlx::MySqlPool;
 
@@ -14,81 +21,46 @@ async fn question_handler(
     body: web::Json<GetQuestionRequest>,
     data: web::Data<AppState>,
 ) -> impl Responder {
-    let response = match random::<i32>() % 2 {
-        0 => {
-            let question_result = sqlx::query!(
-                "SELECT * FROM single_choice_questions WHERE category = ?",
-                &body.category
-            )
-            .fetch_all(&data.db)
-            .await
-            .unwrap();
+    let question_result = sqlx::query!(
+        "SELECT * FROM multiple_choice_questions WHERE category = ?",
+        &body.category
+    )
+    .fetch_all(&data.db)
+    .await
+    .unwrap();
 
-            let question = question_result.choose(&mut rand::thread_rng()).unwrap();
+    let question = question_result.choose(&mut rand::thread_rng()).unwrap();
 
-            let response: ApiResponse<SingleChoiceQuestion> = ApiResponse::success(
-                SingleChoiceQuestion {
-                    id: question.id.clone(),
-                    text: question.text.clone(),
-                    category: question.category.clone(),
-                    correct_answer: question.correct_answer.clone(),
-                    wrong_answers: vec![
-                        question.wrong_answer1.clone(),
-                        question.wrong_answer2.clone(),
-                        question.wrong_answer3.clone(),
-                    ],
-                },
-                "Bv boss",
-            );
+    let to_bool = |i: i8| -> bool { i != 0 };
 
-            HttpResponse::Ok().json(response)
-        }
-        1 => {
-            let question_result = sqlx::query!(
-                "SELECT * FROM multiple_choice_questions WHERE category = ?",
-                &body.category
-            )
-            .fetch_all(&data.db)
-            .await
-            .unwrap();
+    let response = ApiResponse::success(
+        MultipleChoiceQuestion {
+            id: question.id.clone(),
+            category: question.category.clone(),
+            text: question.text.clone(),
+            answers: vec![
+                (
+                    question.answer1.clone(),
+                    to_bool(question.is_correct_answer_1),
+                ),
+                (
+                    question.answer2.clone(),
+                    to_bool(question.is_correct_answer_2),
+                ),
+                (
+                    question.answer3.clone(),
+                    to_bool(question.is_correct_answer_3),
+                ),
+                (
+                    question.answer4.clone(),
+                    to_bool(question.is_correct_answer_4),
+                ),
+            ],
+        },
+        "Bv boss",
+    );
 
-            let question = question_result.choose(&mut rand::thread_rng()).unwrap();
-
-            let to_bool = |i: i8| -> bool { i != 0 };
-
-            let response = ApiResponse::success(
-                MultipleChoiceQuestion {
-                    id: question.id.clone(),
-                    category: question.category.clone(),
-                    text: question.text.clone(),
-                    answers: vec![
-                        (
-                            question.answer1.clone(),
-                            to_bool(question.is_correct_answer_1),
-                        ),
-                        (
-                            question.answer2.clone(),
-                            to_bool(question.is_correct_answer_2),
-                        ),
-                        (
-                            question.answer3.clone(),
-                            to_bool(question.is_correct_answer_3),
-                        ),
-                        (
-                            question.answer4.clone(),
-                            to_bool(question.is_correct_answer_4),
-                        ),
-                    ],
-                },
-                "Bv boss",
-            );
-
-            HttpResponse::Ok().json(response)
-        }
-        _ => panic!(),
-    };
-
-    response
+    HttpResponse::Ok().json(response)
 }
 
 #[post("/register")]
@@ -254,7 +226,7 @@ async fn result_handler(
 
     match query_result {
         Ok(_) => {
-            let response = ApiResponse::success( (), "Result saved successfully", );
+            let response = ApiResponse::success((), "Result saved successfully");
             HttpResponse::Ok().json(response)
         }
         Err(err) => {
@@ -317,13 +289,8 @@ async fn history_handler(
 }
 
 #[get("/countries")]
-async fn country_handler(
-    data: web::Data<AppState>,
-) -> impl Responder {
-    let countries_result = sqlx::query_as!(
-        Country,
-        "SELECT * FROM countries",
-    )
+async fn country_handler(data: web::Data<AppState>) -> impl Responder {
+    let countries_result = sqlx::query_as!(Country, "SELECT * FROM countries",)
         .fetch_all(&data.db)
         .await;
 
@@ -335,10 +302,7 @@ async fn country_handler(
                 let id = country.id.clone();
                 let name = country.name.clone();
 
-                let country = Country {
-                    id,
-                    name,
-                };
+                let country = Country { id, name };
 
                 countries_list.push(country)
             }
@@ -370,8 +334,8 @@ async fn country_info_handler(
         "SELECT text FROM countries_info WHERE country_id = ?",
         &body.id
     )
-        .fetch_all(&data.db)
-        .await;
+    .fetch_all(&data.db)
+    .await;
 
     match country_info_result {
         Ok(country_infos) => {
@@ -379,7 +343,6 @@ async fn country_info_handler(
 
             for country_info in country_infos.iter() {
                 let text = country_info.text.clone();
-
 
                 country_info_list.push(text);
             }
@@ -402,13 +365,8 @@ async fn country_info_handler(
 }
 
 #[get("/tips")]
-async fn tips_handler(
-    data: web::Data<AppState>,
-) -> impl Responder {
-    let tips_result = sqlx::query_as!(
-        Tips,
-        "SELECT text FROM tips",
-    )
+async fn tips_handler(data: web::Data<AppState>) -> impl Responder {
+    let tips_result = sqlx::query_as!(Tips, "SELECT text FROM tips",)
         .fetch_all(&data.db)
         .await;
 
@@ -423,9 +381,7 @@ async fn tips_handler(
             }
 
             let response: ApiResponse<TipsResponse> = ApiResponse::success(
-                TipsResponse {
-                    tips: tips_list,
-                },
+                TipsResponse { tips: tips_list },
                 "Tips retrieved successfully",
             );
 
