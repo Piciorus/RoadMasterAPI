@@ -7,11 +7,9 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c00710fb-36ca-4b06-883a-6c942bc61b03" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c00710fb-36ca-4b06-883a-6c942bc61b03" name="Changes" comment="implemented single choice and multiple choice questions">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/migrations/20231115191643_roadmaster.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/20231115191643_roadmaster.up.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +61,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;language.rust.rustfmt&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;language.rust&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -71,14 +69,14 @@
     <option name="runOnTheFly" value="true" />
     <option name="tool" value="Clippy" />
   </component>
-  <component name="RunManager" selected="Makefile Target.migrate-up">
+  <component name="RunManager" selected="Cargo.Run rust-mysql-crud-sqlx">
     <configuration name="Run rust-mysql-crud-sqlx" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="run --package rust-mysql-crud-sqlx --bin rust-mysql-crud-sqlx" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="true" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -92,10 +90,10 @@
     <configuration name="Test rust-mysql-crud-sqlx" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="command" value="test --workspace" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$" />
-      <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
       <option name="requiredFeatures" value="true" />
       <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="true" />
       <option name="withSudo" value="false" />
       <option name="buildTarget" value="REMOTE" />
       <option name="backtrace" value="SHORT" />
@@ -146,16 +144,13 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Makefile Target.migrate-up" />
-        <item itemvalue="Makefile Target.dev" />
-        <item itemvalue="Makefile Target.migrate-down" />
-        <item itemvalue="Makefile Target.dev-down" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
   <component name="RustProjectSettings">
-    <option name="toolchainHomeDirectory" value="/usr/bin" />
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
   <component name="RustfmtProjectSettings">
     <option name="runRustfmtOnSave" value="true" />
@@ -208,6 +203,7 @@
       <workItem from="1704556209874" duration="149000" />
       <workItem from="1704565537676" duration="35000" />
       <workItem from="1704893843615" duration="34000" />
+      <workItem from="1705421822030" duration="1281000" />
     </task>
     <task id="LOCAL-00001" summary="first mockup of get question">
       <option name="closed" value="true" />
