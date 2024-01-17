@@ -20,6 +20,7 @@ async fn main() -> std::io::Result<()> {
     dotenv().ok();
     env_logger::init();
 
+    //Man nimmt sich die Daten aus der .env File, um sich an der DB zu binden
     let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
     let pool = match MySqlPoolOptions::new()
         .max_connections(10)
@@ -38,6 +39,7 @@ async fn main() -> std::io::Result<()> {
 
     println!("Server started successfully");
 
+    //Konfigurationen fur Endpoints
     HttpServer::new(move || {
         let cors = Cors::default()
             .allowed_origin("http://localhost:3000")

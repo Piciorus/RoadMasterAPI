@@ -16,6 +16,7 @@ use bcrypt::verify;
 use rand::seq::SliceRandom;
 use sqlx::MySqlPool;
 
+//Endpoint um Fragen aus der DB zu holen
 #[post("/question")]
 async fn question_handler(
     body: web::Json<GetQuestionRequest>,
@@ -63,6 +64,7 @@ async fn question_handler(
     HttpResponse::Ok().json(response)
 }
 
+//Endpoint fur registrieren
 #[post("/register")]
 async fn register_handler(
     body: web::Json<RegisterUserRequest>,
@@ -122,6 +124,7 @@ async fn register_handler(
     }
 }
 
+//Endpoint fur einloggen
 #[post("/login")]
 async fn login_handler(body: web::Json<LoginRequest>, data: web::Data<AppState>) -> impl Responder {
     let result = sqlx::query!(
@@ -165,6 +168,7 @@ async fn login_handler(body: web::Json<LoginRequest>, data: web::Data<AppState>)
     }
 }
 
+//Endpoint fur die Veranderung des Passwortes
 #[post("/reset-password")]
 async fn reset_password_handler(
     body: web::Json<ResetPasswordRequest>,
@@ -204,6 +208,7 @@ async fn reset_password_handler(
     }
 }
 
+//Endpoint um das Ergebnis eines Quizes in der DB zu speichern
 #[post("/result")]
 async fn result_handler(
     body: web::Json<model::Result>,
@@ -238,6 +243,7 @@ async fn result_handler(
     }
 }
 
+//Endpoint um alle fruhere Ergebnisse eines Users aus der DB zu holen
 #[post("/history")]
 async fn history_handler(
     body: web::Json<LoggedInUserRequest>,
@@ -288,6 +294,7 @@ async fn history_handler(
     }
 }
 
+//Endpoint um alle gespeicherte Landeroptionen aus der DB zu holen
 #[get("/countries")]
 async fn country_handler(data: web::Data<AppState>) -> impl Responder {
     let countries_result = sqlx::query_as!(Country, "SELECT * FROM countries",)
@@ -324,6 +331,7 @@ async fn country_handler(data: web::Data<AppState>) -> impl Responder {
     }
 }
 
+//Endpoint um alle gespeicherte Informationen zum Fahren in einem gegebenen Land aus der DB zu holen
 #[post("/country-info")]
 async fn country_info_handler(
     body: web::Json<Country>,
@@ -364,6 +372,7 @@ async fn country_info_handler(
     }
 }
 
+//Endpoint um alle gespeicherte Tips fur die praktische Prufung aus der DB zu holen
 #[get("/tips")]
 async fn tips_handler(data: web::Data<AppState>) -> impl Responder {
     let tips_result = sqlx::query_as!(Tips, "SELECT text FROM tips",)
@@ -416,6 +425,7 @@ async fn get_id_from_database_by_password(db: &MySqlPool, email: String) -> Stri
         .unwrap_or_default()
 }
 
+//Endpoints Zugriffskonfigurationen
 pub fn config(conf: &mut web::ServiceConfig) {
     let scope = web::scope("/api")
         .service(register_handler)
