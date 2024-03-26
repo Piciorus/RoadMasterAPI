@@ -1,12 +1,17 @@
-mod helper;
+mod database;
+mod helpers;
+mod http;
 mod model;
-mod user_handler;
 
 use actix_cors::Cors;
 use actix_web::middleware::Logger;
 use actix_web::{http::header, web, App, HttpServer};
 use dotenv::dotenv;
 use sqlx::mysql::{MySqlPool, MySqlPoolOptions};
+
+use crate::http::{
+    countries_handler, history_handler, question_handler, tips_handler, user_handler,
+};
 
 pub struct AppState {
     db: MySqlPool,
@@ -20,8 +25,8 @@ async fn main() -> std::io::Result<()> {
     dotenv().ok();
     env_logger::init();
 
-    //Man nimmt sich die Daten aus der .env File, um sich an der DB zu binden
     let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+
     let pool = match MySqlPoolOptions::new()
         .max_connections(10)
         .connect(&database_url)
@@ -39,7 +44,6 @@ async fn main() -> std::io::Result<()> {
 
     println!("Server started successfully");
 
-    //Konfigurationen fur Endpoints
     HttpServer::new(move || {
         let cors = Cors::default()
             .allowed_origin("http://localhost:3000")
@@ -53,6 +57,10 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(web::Data::new(AppState { db: pool.clone() }))
             .configure(user_handler::config)
+            .configure(countries_handler::config)
+            .configure(history_handler::config)
+            .configure(question_handler::config)
+            .configure(tips_handler::config)
             .wrap(cors)
             .wrap(Logger::default())
     })
