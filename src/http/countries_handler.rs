@@ -3,7 +3,7 @@ use actix_web::{get, post, web, HttpResponse, Responder};
 use crate::{
     model::{
         api_response::ApiResponse,
-        country::{CountriesInfoResponse, CountriesResponse, Country, CountryInfo},
+        country::{CountriesInfoResponse, CountriesResponse, Country},
     },
     AppState,
 };

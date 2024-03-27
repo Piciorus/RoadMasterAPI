@@ -8,8 +8,6 @@ use crate::{
     AppState,
 };
 
-use rand::prelude::SliceRandom;
-
 #[post("/question")]
 async fn post_question(
     body: web::Json<GetQuestionRequest>,
