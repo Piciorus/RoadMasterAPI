@@ -53,7 +53,7 @@ pub(crate) async fn insert_user(
         .await
 }
 
-pub(crate) async fn update_result(
+pub(crate) async fn update_user(
     db: &MySqlPool,
     new_pass: String,
     id: String,

@@ -4,7 +4,7 @@ use bcrypt::verify;
 use crate::{
     database::user::{
         email_exists, get_actual_password_from_database, get_actual_username_from_database,
-        get_id_from_database_by_password, insert_user, try_login, update_result,
+        get_id_from_database_by_password, insert_user, try_login, update_user,
     },
     helpers::helper::{hash_password, is_valid_email},
     model::{
@@ -114,7 +114,7 @@ async fn reset_password_handler(
 
     let hashed_new_password = hash_password(&body.new_password);
 
-    match update_result(&data.db, hashed_new_password, actual_id).await {
+    match update_user(&data.db, hashed_new_password, actual_id).await {
         Ok(_) => {
             let response: ApiResponse<()> = ApiResponse::success((), "Password reset successfully");
             HttpResponse::Ok().json(response)
